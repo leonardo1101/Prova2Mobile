@@ -16,14 +16,13 @@ android:id="@+id/container"    >
     android:contentDescription="@null" />
 
 <TextView
-    android:id="@+id/socFilan_name"
+    android:id="@+id/soc_name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_centerInParent="true"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
     android:ellipsize="end"
-    android:fontFamily="sans-serif-light"
     android:maxLines="1"
     android:textAllCaps="true"
     android:textColor="@color/colorAccent"
