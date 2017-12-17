@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/image_view_socf"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/colorPrimaryDark"
+        android:contentDescription="@null" />
+    <TextView
+        android:id="@+id/socfname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/black"
+        android:layout_below="@+id/image_view_socf"
+        android:layout_marginTop="25dp"
+        android:textSize="27sp" />
+    <TextView
+        android:id="@+id/socfdesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/black"
+        android:layout_below="@+id/socfname"
+        android:layout_marginTop="25dp"
+        android:textSize="27sp" />
+    <TextView
+        android:id="@+id/socfsite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:layout_below="@+id/socfdesc"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/black"
+        android:textSize="27sp" />
+</RelativeLayout>

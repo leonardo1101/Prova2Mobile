@@ -25,14 +25,16 @@ public class SocFAdapter extends RecyclerView.Adapter<SocFAdapter.ViewHolder> {
     OnRecyclerViewSelected onRecyclerViewSelected;
 
     //Construtor que recebe a lista
-    SocFAdapter(List<SocFEntity> socFList) {
-        this.socFList = socFList;
+    SocFAdapter(List<SocFEntity> socFListsocFList,Context context) {
+        this.socFList = socFListsocFList;
+        this.context = context;
     }
 
     //infla o componente view
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_socf, parent, false);
+        View v;
+        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_socf, parent, false);
         return new ViewHolder(v);
     }
 
@@ -40,9 +42,9 @@ public class SocFAdapter extends RecyclerView.Adapter<SocFAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         SocFEntity socFEntity = socFList.get(position);
-        holder.txSocFName.setText(socFEntity.nome);
+        holder.txSocFName.setText(socFEntity.getName());
             Picasso.with(context)
-                .load(socFEntity.imageURL)
+                .load(socFEntity.getImage())
                 .centerCrop()
                 .fit()
                 .into(holder.imgBackgroudSocF);
@@ -51,7 +53,9 @@ public class SocFAdapter extends RecyclerView.Adapter<SocFAdapter.ViewHolder> {
     //retorna o tamanho da lista
     @Override
     public int getItemCount() {
-        return socFList.size();
+        if( socFList != null)
+            return socFList.size();
+        return 0;
     }
 
     //mapeamento dos componentes da view

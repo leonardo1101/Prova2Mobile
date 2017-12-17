@@ -1,6 +1,7 @@
 package com.example.leonardo.prova2.socF;
 
 import android.content.Intent;
+import android.net.http.RequestQueue;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,8 +10,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.leonardo.prova2.Entity.SocFEntity;
 import com.example.leonardo.prova2.Entity.SocFListEntity;
 import com.example.leonardo.prova2.R;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -24,18 +33,15 @@ public class SocFActivity extends AppCompatActivity implements SocFView {
     RecyclerView rvSocF;
 
     socFPresenter socFPresenter;
-    SocFAdapter socFAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.socf);
-
         ButterKnife.bind(this);
 
-       socFPresenter = new socFPresenter(this);
-       socFPresenter.setAdapterList();
+        socFPresenter = new socFPresenter(this);
+        socFPresenter.setAdapterList();
     }
 
 
@@ -45,17 +51,23 @@ public class SocFActivity extends AppCompatActivity implements SocFView {
     }
 
 
-    public void updateList(SocFListEntity socFLisi) {
-        socFAdapter = new SocFAdapter(socFLisi.getSocF());
+    public void updateList(List<SocFEntity> socFList) {
 
-        socFAdapter.setOnRecyclerViewSelected(new OnRecyclerViewSelected() {
-            @Override
-            public void onClick(View view, int position) {
-                Toast.makeText(SocFActivity.this, "Clique rápido", Toast.LENGTH_SHORT).show();
-            }
-        });
+            SocFAdapter socFAdapter;
+            socFAdapter = new SocFAdapter(socFList,this);
 
-        rvSocF.setAdapter(socFAdapter);
+            socFAdapter.setOnRecyclerViewSelected(new OnRecyclerViewSelected() {
+                @Override
+                public void onClick(View view, int position) {
+                    Toast.makeText(SocFActivity.this, "Clique rápido", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            rvSocF.setAdapter(socFAdapter);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+            rvSocF.setLayoutManager(layoutManager);
 
     }
+
+
 }

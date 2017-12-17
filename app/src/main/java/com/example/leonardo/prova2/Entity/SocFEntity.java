@@ -1,5 +1,6 @@
 package com.example.leonardo.prova2.Entity;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -9,14 +10,39 @@ import com.google.gson.annotations.SerializedName;
 public class SocFEntity {
 
     @SerializedName("id")
-    public long id;
+    @Expose
+    private long id;
     @SerializedName("name")
-    public String nome;
-    @SerializedName("description")
-    public String descricao;
+    @Expose
+    private String name;
     @SerializedName("image")
-    public String imageURL;
+    @Expose
+    private String image;
+    @SerializedName("description")
+    @Expose
+    private String description;
     @SerializedName("site")
-    public String site;
+    @Expose
+    private String site;
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getImage () {
+        return image;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getSite() {
+        return site;
+    }
 
 }
