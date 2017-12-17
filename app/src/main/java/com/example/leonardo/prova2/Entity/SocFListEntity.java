@@ -1,5 +1,7 @@
 package com.example.leonardo.prova2.Entity;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -7,7 +9,9 @@ import java.util.List;
  */
 
 public class SocFListEntity {
-    private List<SocFEntity> socF;
+
+    @SerializedName("acoes_sociais")
+    public List<SocFEntity> socF;
 
     public List<SocFEntity> getSocF() {
         return socF;

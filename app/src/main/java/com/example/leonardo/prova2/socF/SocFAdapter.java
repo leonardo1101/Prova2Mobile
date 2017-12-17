@@ -40,9 +40,9 @@ public class SocFAdapter extends RecyclerView.Adapter<SocFAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         SocFEntity socFEntity = socFList.get(position);
-        holder.txSocFName.setText(socFEntity.getNome());
+        holder.txSocFName.setText(socFEntity.nome);
             Picasso.with(context)
-                .load(socFEntity.getImageURL())
+                .load(socFEntity.imageURL)
                 .centerCrop()
                 .fit()
                 .into(holder.imgBackgroudSocF);

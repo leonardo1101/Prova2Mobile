@@ -5,12 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import java.util.List;
-
-import com.example.leonardo.prova2.Entity.SocFEntity;
 import com.example.leonardo.prova2.Entity.SocFListEntity;
 import com.example.leonardo.prova2.R;
 import butterknife.BindView;
@@ -28,15 +26,18 @@ public class SocFActivity extends AppCompatActivity implements SocFView {
     socFPresenter socFPresenter;
     SocFAdapter socFAdapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.socf);
 
         ButterKnife.bind(this);
-        socFPresenter = new socFPresenter(this);
-        socFPresenter.setAdapterList();
+
+       socFPresenter = new socFPresenter(this);
+       socFPresenter.setAdapterList();
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
