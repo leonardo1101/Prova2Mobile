@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.util.List;
+
+import com.example.leonardo.prova2.Entity.SocFEntity;
+import com.example.leonardo.prova2.Entity.SocFListEntity;
 import com.example.leonardo.prova2.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,6 +26,7 @@ public class SocFActivity extends AppCompatActivity implements SocFView {
     RecyclerView rvSocF;
 
     socFPresenter socFPresenter;
+    SocFAdapter socFAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,31 +35,26 @@ public class SocFActivity extends AppCompatActivity implements SocFView {
 
         ButterKnife.bind(this);
         socFPresenter = new socFPresenter(this);
+        socFPresenter.setAdapterList();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        socFPresenter.addSocFInList(requestCode, resultCode, data);
     }
 
-    @Override
-    public void updateList(List<String> moviesList) {
 
-        //seta o adapter
-        SocFAdapter socFAdapter = new SocFAdapter(moviesList);
+    public void updateList(SocFListEntity socFLisi) {
+        socFAdapter = new SocFAdapter(socFLisi.getSocF());
+
         socFAdapter.setOnRecyclerViewSelected(new OnRecyclerViewSelected() {
             @Override
             public void onClick(View view, int position) {
-                Toast.makeText(SocFActivity.this, "Clique Rápido", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SocFActivity.this, "Clique rápido", Toast.LENGTH_SHORT).show();
             }
-
         });
 
         rvSocF.setAdapter(socFAdapter);
 
-        // criação do gerenciador de layouts
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        rvSocF.setLayoutManager(layoutManager);
     }
 }

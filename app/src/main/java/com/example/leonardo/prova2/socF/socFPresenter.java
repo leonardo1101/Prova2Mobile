@@ -1,10 +1,16 @@
 package com.example.leonardo.prova2.socF;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.support.annotation.NonNull;
+
+import com.example.leonardo.prova2.Entity.SocFListEntity;
+import com.example.leonardo.prova2.network.api.SocFAPI;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by leonardo on 12/16/17.
@@ -19,11 +25,8 @@ public class socFPresenter {
         this.socFView = socFView;
    }
 
-    void addSocFInList(int requestCode, int resultCode, Intent data){
-        if(requestCode == 123 && resultCode == Activity.RESULT_OK){
-            String socFName = data.getStringExtra("socFName");
-            socFList.add(socFName);
-            socFView.updateList(socFList);
-        }
+    protected void setAdapterList(){
+        final SocFAPI socFAPI = SocFAPI.getInstance();
+        socFView.updateList(socFAPI.getSocF());
     }
 }

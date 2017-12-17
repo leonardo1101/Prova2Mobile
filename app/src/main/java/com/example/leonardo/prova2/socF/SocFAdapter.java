@@ -7,23 +7,26 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.List;
+import android.content.Context;
+import com.example.leonardo.prova2.Entity.SocFEntity;
 import com.example.leonardo.prova2.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import com.squareup.picasso.Picasso;
 /**
  * Created by leonardo on 12/16/17.
  */
 
 public class SocFAdapter extends RecyclerView.Adapter<SocFAdapter.ViewHolder> {
-
-    private List<String> socFList;
+    private Context context;
+    private List<SocFEntity> socFList;
     OnRecyclerViewSelected onRecyclerViewSelected;
 
     //Construtor que recebe a lista
-    SocFAdapter(List<String> moviesList) {
-        this.socFList = moviesList;
+    SocFAdapter(List<SocFEntity> socFList) {
+        this.socFList = socFList;
     }
 
     //infla o componente view
@@ -36,8 +39,13 @@ public class SocFAdapter extends RecyclerView.Adapter<SocFAdapter.ViewHolder> {
     //seta os dados nas views
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.txMovieName.setText(socFList.get(position));
-        //holder.imgBackgroud.setImageBitmap();
+        SocFEntity socFEntity = socFList.get(position);
+        holder.txSocFName.setText(socFEntity.getNome());
+            Picasso.with(context)
+                .load(socFEntity.getImageURL())
+                .centerCrop()
+                .fit()
+                .into(holder.imgBackgroudSocF);
     }
 
     //retorna o tamanho da lista
@@ -50,10 +58,10 @@ public class SocFAdapter extends RecyclerView.Adapter<SocFAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.soc_name)
-        TextView txMovieName;
+        TextView txSocFName;
 
-        @BindView(R.id.image_view_background)
-        ImageView imgBackgroud;
+        @BindView(R.id.image_view_socf)
+        ImageView imgBackgroudSocF;
 
         public ViewHolder(View itemView) {
             super(itemView);

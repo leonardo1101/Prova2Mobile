@@ -1,5 +1,7 @@
 package com.example.leonardo.prova2.socF;
 
+import com.example.leonardo.prova2.Entity.SocFListEntity;
+
 import java.util.List;
 
 /**
@@ -7,5 +9,5 @@ import java.util.List;
  */
 
 public interface SocFView {
-    void updateList(List<String> socFList);
+    void updateList(SocFListEntity socFList);
 }
