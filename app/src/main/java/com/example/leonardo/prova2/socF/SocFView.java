@@ -11,4 +11,5 @@ import java.util.List;
 
 public interface SocFView {
     void updateList(List<SocFEntity> socFList);
+    void saveMoviesInSharedPreferences(String jsonMovieEntity);
 }

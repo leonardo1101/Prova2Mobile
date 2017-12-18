@@ -7,6 +7,7 @@ import android.util.Log;
 import com.example.leonardo.prova2.Entity.SocFEntity;
 import com.example.leonardo.prova2.Entity.SocFListEntity;
 import com.example.leonardo.prova2.network.api.SocFAPI;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class socFPresenter {
 
     private SocFView socFView;
     private List<SocFEntity> socFList;
+    private SocFListEntity socFListEntity;
 
     socFPresenter(SocFView socFView){
         this.socFView = socFView;
@@ -34,10 +36,10 @@ public class socFPresenter {
             @Override
             public void onResponse(Call<SocFListEntity> call, Response<SocFListEntity> response) {
 
-                SocFListEntity socListEntity = response.body();
+                 socFListEntity = response.body();
 
-                if(socListEntity != null && socListEntity.getSocFist() != null){
-                    socFView.updateList(socListEntity.getSocFist());
+                if(socFListEntity != null && socFListEntity.getSocFist() != null){
+                    socFView.updateList(socFListEntity.getSocFist());
                 }
             }
             @Override
@@ -45,5 +47,15 @@ public class socFPresenter {
 
             }
         });
+    }
+
+    SocFEntity getMovieId(int position) throws IndexOutOfBoundsException {
+        return socFListEntity.getSocFist().get(position);
+
+    }
+
+    void saveMovies() {
+        String jsonMovieEntity = new Gson().toJson(socFListEntity);
+        socFView.saveMoviesInSharedPreferences(jsonMovieEntity);
     }
 }

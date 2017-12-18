@@ -1,23 +1,16 @@
 package com.example.leonardo.prova2.socF;
 
 import android.content.Intent;
-import android.net.http.RequestQueue;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.leonardo.prova2.Entity.SocFEntity;
-import com.example.leonardo.prova2.Entity.SocFListEntity;
 import com.example.leonardo.prova2.R;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.example.leonardo.prova2.SocFdetails.SocFDetailsActivity;
 import java.util.List;
 
 import butterknife.BindView;
@@ -59,7 +52,11 @@ public class SocFActivity extends AppCompatActivity implements SocFView {
             socFAdapter.setOnRecyclerViewSelected(new OnRecyclerViewSelected() {
                 @Override
                 public void onClick(View view, int position) {
-                    Toast.makeText(SocFActivity.this, "Clique rápido", Toast.LENGTH_SHORT).show();
+                    Intent openDetailActivity = new Intent(SocFActivity.this, SocFDetailsActivity.class);
+                    SocFEntity socFEntity = new SocFEntity();
+                    socFEntity = socFPresenter.getMovieId(position);
+                    openDetailActivity.putExtra("socfe",socFEntity);
+                    startActivity(openDetailActivity);
                 }
             });
 
@@ -67,6 +64,13 @@ public class SocFActivity extends AppCompatActivity implements SocFView {
             LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             rvSocF.setLayoutManager(layoutManager);
 
+    }
+    @Override
+    public void saveMoviesInSharedPreferences(String jsonMovieEntity) {
+        //salva json dos filmes para trabalhar ofline
+        SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.socf),MODE_PRIVATE).edit();
+        editor.putString(getString(R.string.socf_entity_json), jsonMovieEntity);
+        editor.apply();
     }
 
 

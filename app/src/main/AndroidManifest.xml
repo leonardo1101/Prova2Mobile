@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".socF.SocFilanActivity"></activity>
+        <activity android:name=".SocFdetails.SocFDetailsActivity"></activity>
     </application>
 
 </manifest>

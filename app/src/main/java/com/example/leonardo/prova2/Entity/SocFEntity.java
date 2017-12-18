@@ -3,11 +3,13 @@ package com.example.leonardo.prova2.Entity;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by leonardo on 12/16/17.
  */
 
-public class SocFEntity {
+public class SocFEntity implements Serializable{
 
     @SerializedName("id")
     @Expose
@@ -24,6 +26,8 @@ public class SocFEntity {
     @SerializedName("site")
     @Expose
     private String site;
+
+    private static final long serialVersionUID = 46543445;
 
     public long getId() {
         return id;
