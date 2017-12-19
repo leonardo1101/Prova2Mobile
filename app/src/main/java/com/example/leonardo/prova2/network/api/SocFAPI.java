@@ -18,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SocFAPI {
     private static SocFAPI instance;
-    private SocFService socialActionsService;
+    private SocFService socFService;
 
     public static SocFAPI getInstance() {
         if (instance == null) {
@@ -34,7 +34,7 @@ public class SocFAPI {
                 .addConverterFactory(defaultConverterFactory())
                 .build();
 
-        this.socialActionsService = retrofit.create(SocFService.class);
+        this.socFService = retrofit.create(SocFService.class);
     }
 
     private Converter.Factory defaultConverterFactory() {
@@ -45,8 +45,8 @@ public class SocFAPI {
     }
 
 
-    public Call<SocFListEntity> getActions() {
-        return socialActionsService.getSocFist();
+    public Call<SocFListEntity> getSocF() {
+        return socFService.getSocFist();
     }
 }
 

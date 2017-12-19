@@ -33,8 +33,6 @@ public class SocFDetailsActivity extends AppCompatActivity {
     @BindView(R.id.socfsite)
     TextView socfsite ;
 
-    @BindView(R.id.linear_layout_loading)
-    LinearLayout loadingLayout;
 
     SocFEntity socFEntity;
 
@@ -51,11 +49,7 @@ public class SocFDetailsActivity extends AppCompatActivity {
         setDetails(socFEntity);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_download, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

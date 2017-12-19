@@ -9,14 +9,21 @@ android:id="@+id/container"    >
         android:layout_height="match_parent"
         android:background="@color/colorPrimaryDark"
         android:foregroundTint="@color/colorPrimaryDark"/>
-
     <ImageView
+        android:layout_alignBottom="@+id/image_view_header"
         android:id="@+id/image_view_socf"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimaryDark"
         android:contentDescription="@null"
         />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/image_view_header"
+        android:contentDescription="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/sombra_detalhes" />
 
     <TextView
         android:id="@+id/soc_name"

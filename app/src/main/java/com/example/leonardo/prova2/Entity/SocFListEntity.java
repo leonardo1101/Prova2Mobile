@@ -19,10 +19,10 @@ public class SocFListEntity {
 
     @SerializedName("acoes_sociais")
     @Expose
-    public List<SocFEntity> acoes_sociais = null;
+    public List<SocFEntity> socFL = null;
 
-    public List<SocFEntity> getSocFist() {
-        return acoes_sociais;
+    public List<SocFEntity> getSocFList() {
+        return socFL;
     }
 
 
